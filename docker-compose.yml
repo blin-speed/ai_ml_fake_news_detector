@@ -1,0 +1,18 @@
+services:
+  api:
+    build:
+      context: .
+      args:
+        REQS: requirements.txt          # use requirements-lite.txt together with ENABLE_LSTM=0 for a small image
+    ports: ["8000:8000"]
+    volumes:
+      - "./models_v2:/srv/models_v2:ro"      # models are mounted, not baked in
+      - "./data:/srv/data"                   # persistent client JSONL storage
+    environment:
+      ENABLE_LSTM: "1"
+      DATA_DIR: "/srv/data"
+      CORS_ORIGINS: "http://localhost:3000,http://localhost:5173"
+      # ADMIN_TOKEN: "set-a-secret-token-for-admin-export"
+      # RETENTION_DAYS: "0"
+      # FAKE_THRESHOLD: "0.65"
+      # REAL_THRESHOLD: "0.35"

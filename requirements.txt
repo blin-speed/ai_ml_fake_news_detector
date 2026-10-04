@@ -1,0 +1,9 @@
+# --- serving ---
+fastapi>=0.110,<1.0
+uvicorn[standard]>=0.29,<1.0
+pydantic>=2.6,<3
+# --- models: PIN THESE to the versions the models were trained with (see README "Version pinning") ---
+tensorflow-cpu==2.20.0
+scikit-learn>=1.5,<1.9
+numpy>=1.26,<3
+joblib>=1.3
